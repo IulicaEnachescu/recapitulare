@@ -79,6 +79,81 @@ namespace recapitulare
             }
             return true;
         }
+        public static int RomanToInt(string s)
+        {
+            //           If I comes before V or X, subtract 1 eg: IV = 4 and IX = 9
+            //* If X comes before L or C, subtract 10 eg: XL = 40 and XC = 90
+            //* If C comes before D or M, subtract 100 eg: CD = 400 and CM = 900
+            if (String.IsNullOrEmpty(s)) throw new ArgumentNullException();
+
+            s = s.ToUpper();
+            int l = s.Length;
+            int res = 0;
+
+            for (int i = 0; i < l; i++)
+            {
+                // Getting value of symbol s[i]  
+                int s1 = Value(s[i]);
+
+                // Getting value of symbol s[i+1]  
+                if (i + 2 < l)
+                {
+
+                    if ((s[i] == s[i + 2]) && !(s[i + 1] == s[i]) && (Value(s[i]) < Value(s[i + 1]))) return -1;
+                }
+                if (i + 1 < l)
+                {
+                    int s2 = Value(s[i + 1]);
+                   
+
+                    // Comparing both values  
+                   // if (s)
+                    if (s1 >= s2)
+                    {
+                        // Value of current symbol is greater  
+                        // or equalto the next symbol  
+                        res = res + s1;
+                    }
+                    else
+                    {
+                        res = res + s2 - s1;
+                        i++; // Value of current symbol is 
+                             // less than the next symbol  
+                    }
+                }
+                else
+                {
+                    res = res + s1;
+                    i++;
+                }
+            }
+                return res;
+        }
+        private static int Value(char v)
+        {   
+            if (v == 'I') return 1;
+            if (v == 'V') return 5;
+            if (v == 'L') return 50;
+            if (v == 'X') return 10;
+            if (v == 'C') return 100;
+            if (v == 'D') return 500;
+            if (v == 'M') return 1000;
+            return -1;
+        }
+        public static int Reverse(int x)
+        {
+            int reverse = 0;
+            while (x != 0)
+            {
+                int pop = x % 10;
+                x /= 10;
+                if (reverse > Int32.MaxValue / 10 || (reverse == Int32.MinValue / 10 && pop >7))  return 0;
+                if (reverse < Int32.MinValue / 10 || (reverse == Int32.MinValue / 10 && pop < -8)) return 0;
+                reverse = reverse * 10 + pop;
+            }
+            return reverse;
+
+        }
     }
 }
 

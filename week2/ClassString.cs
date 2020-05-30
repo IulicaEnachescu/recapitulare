@@ -7,9 +7,29 @@ using System.Threading.Tasks;
 namespace week2
 {
     public class ClassString
-    {
-        //Implement an algorithm to determine if a string has all unique characters.
-        public static bool UniquesCharacters(string str)
+    {   //Implement an algorithm to determine first unique element in a string
+
+        public int FirstUniqChar(string s)
+        {
+            if (String.IsNullOrEmpty(s)) return -1;
+            int n = s.Length;
+            if (n == 1) return 0;
+            Dictionary<char, int> dict = new Dictionary<char, int>();
+            for (int i = 0; i < n; i++)
+            {
+                if (dict.ContainsKey(s[i])) dict[s[i]]++;
+                else dict.Add(s[i], 1);
+            }
+            for (int i = 0; i < n; i++)
+            {
+                if (dict[s[i]] == 1) return i;
+            }
+            return -1;
+        }
+
+            //Implement an algorithm to determine if a string has all unique characters.
+
+            public static bool UniquesCharacters(string str)
         {
             Console.WriteLine(str);
             var str2 = str.Distinct().ToList();
@@ -31,6 +51,7 @@ namespace week2
         {
             Console.WriteLine("Input a text");
             string txt=Console.ReadLine();
+            //txt=txt.re
             var txt2 = txt.Reverse();
             Console.WriteLine(txt2.ToArray());
             StringBuilder txt1 = new StringBuilder(txt);
@@ -116,7 +137,23 @@ namespace week2
             string scd = new String(s);
             return frs == scd;
         }
+        public static bool IsPalindrome(string s)
+        {
+            if (String.IsNullOrEmpty(s)) return true;
 
+            s = s.ToLower();
+            var copy = s.Where(i => (Char.IsLetter(i) == true || Char.IsNumber(i) == true)).ToArray();
+            if (copy.Length == 1) return true;
+            int f = 0;
+            int l = copy.Length - 1;
+            while (f < l)
+            {
+                if (copy[f] != copy[l]) return false;
+                f++;
+                l--;
+            }
+            return true;
+        }
     }
        
 }

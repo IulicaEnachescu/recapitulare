@@ -18,6 +18,10 @@ namespace recapitulare
             int[] array1 = { 1, 4, 2, 8, 7 };
             int[] array2 = { 7, 5, 9, 1, 0, 2, 6 };
             int[] array3 = { 7,7, 5, 5, 9, 1, 0, 2, 6 };
+            Console.WriteLine(array3.Distinct().ToList().Sum());
+            
+            //Console.WriteLine(LetCode.RomanToInt("VCV"));
+          //  Console.WriteLine(LetCode.Reverse(1534236469));
             // Class1.CountUniqueElements(array3);
             //Console.WriteLine (LetCode.IsPowerOfThree(22));
 
@@ -33,8 +37,8 @@ namespace recapitulare
             //Console.WriteLine(ClassString.LastWordLength());
             //Console.WriteLine(ClassString.RemoveDuplicatesFromString("asrtea sas"));
             //Console.WriteLine(Recursion.SumOfBits(4));
-            Console.WriteLine(Recursion.Fibonacci(6));
-            Console.WriteLine(Recursion.FibonacciIterative(6));
+            //Console.WriteLine(Recursion.Fibonacci(6));
+            //Console.WriteLine(Recursion.FibonacciIterative(6));
             //Console.WriteLine(Recursion.SumOfDigitsRec(704));
             //// Console.WriteLine(Class1.MajorityNumber(new[] { 1, 4, 5, 2, 1, 4, 3, 1, 2 }));
             //Console.WriteLine(Class1.MajorityNumber2(new[] { 1, 4, 5, 2, 1, 4, 3, 1, 2 ,1,1,1,1,1}));

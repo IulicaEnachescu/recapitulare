@@ -15,6 +15,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
         public int val;
         public ListNode next;
         public ListNode(int x) { val = x; }
+
         public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
 
@@ -36,6 +37,94 @@ You may assume the two numbers do not contain any leading zero, except the numbe
             }
             if (carry > 0) curr.next = new ListNode(carry);
             return listSum.next;
+        }
+        public bool IsPalindrome1(ListNode head)
+        {//var 1
+            ListNode node = head;
+            List<int> list = new List<int>();
+            //int count = 0;
+            //list.Add(node.val);
+            while (node != null)
+            {
+                list.Add(node.val);
+                node = node.next;
+            }
+            int first = 0;
+            int last = list.Count() - 1;
+            while (first < last)
+            {
+                if (list.ElementAt(first) != list.ElementAt(last)) return false;
+                else
+                {
+                    first++;
+                    last++;
+                }
+            }
+            return true;
+        }
+        public ListNode Reverse(ListNode node)
+        {//for palindrome
+            ListNode newH = null;
+            while (node != null)
+            {
+                ListNode next = node.next;
+                node.next = newH;
+                newH = node;
+                node = next;
+            }
+            return newH;
+        }
+        public ListNode BubleSort(ListNode node)
+        {
+
+            ListNode next = node.next;
+            var itemMoved = false;
+            do
+            {
+                while (next != null)
+                {
+
+                    next = node.next;
+                    if (node.val > next.val)
+                    {
+                        var newNode = node;
+                        node=next;
+                        next=newNode;
+                        itemMoved = true;
+                    }
+                }
+            }
+            while (itemMoved);
+            return node;
+        }
+        
+
+        public bool isPalindrome(ListNode head)
+        {
+            if (head == null)
+            {
+                return true;
+            }
+            ListNode fast = head.next; // made the slow to be one node before the second half.
+            ListNode slow = head;
+            while (fast != null && fast.next != null)
+            {
+                fast = fast.next.next;
+                slow = slow.next;
+            }
+            ListNode half = slow.next;
+            slow.next = null;
+            ListNode h = Reverse(half);
+            while (head != null && h != null)
+            {
+                if (head.val != h.val)
+                {
+                    return false;
+                }
+                head = head.next;
+                h = h.next;
+            }
+            return true;
         }
     }
 }
