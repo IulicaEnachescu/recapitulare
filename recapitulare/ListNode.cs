@@ -74,29 +74,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
             }
             return newH;
         }
-        public ListNode BubleSort(ListNode node)
-        {
-
-            ListNode next = node.next;
-            var itemMoved = false;
-            do
-            {
-                while (next != null)
-                {
-
-                    next = node.next;
-                    if (node.val > next.val)
-                    {
-                        var newNode = node;
-                        node=next;
-                        next=newNode;
-                        itemMoved = true;
-                    }
-                }
-            }
-            while (itemMoved);
-            return node;
-        }
+       
         
 
         public bool isPalindrome(ListNode head)

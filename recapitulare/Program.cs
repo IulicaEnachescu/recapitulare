@@ -19,9 +19,30 @@ namespace recapitulare
             int[] array2 = { 7, 5, 9, 1, 0, 2, 6 };
             int[] array3 = { 7,7, 5, 5, 9, 1, 0, 2, 6 };
             Console.WriteLine(array3.Distinct().ToList().Sum());
+            LinkedList<int> lList = new LinkedList<int>();
+            lList.AddLast(10);
+            lList.AddLast(5);
+            lList.AddLast(11);
+            lList.AddLast(4);
+            var node = lList.First;
+            while (node != null)
+            {
+                Console.WriteLine(node.Value);
+                node = node.Next;
+            }
+            LinkedL l = new LinkedL();
+            var li = l.BubleSort(lList);
+            node = li.First;
+            while (node!=null)
+            {
+                Console.WriteLine(node.Value);
+                node = node.Next;
+            }
             
+
+
             //Console.WriteLine(LetCode.RomanToInt("VCV"));
-          //  Console.WriteLine(LetCode.Reverse(1534236469));
+            //  Console.WriteLine(LetCode.Reverse(1534236469));
             // Class1.CountUniqueElements(array3);
             //Console.WriteLine (LetCode.IsPowerOfThree(22));
 
