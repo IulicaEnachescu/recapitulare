@@ -11,27 +11,41 @@ namespace recapitulare
         public LinkedList<int> BubleSort(LinkedList<int> list)
         {
             var size = list.Count;
-                if (size > 1)
+            if (size > 1)
+            {
+                if (list.First.Value>list.First.Next.Value)
                 {
-                    for (int i = 0; i < size-1; i++)
-                    {
-                        var currentNode = list.First;
+                    ChangeValues(list.First,list.First.Next);
+                }
+                var node = list.First;              
+                bool flag = true;
+                     while (flag)
+                      { 
+                        flag = false;
+                        var currentNode = node;
                         var next = currentNode.Next;
-                        for (int j = i; j < size-1; j++)
+                        for (int j = 0; j < size-1; j++)
                         {
                             if (currentNode.Value > next.Value)
                             {
-                                int temp = currentNode.Value;
-                                currentNode.Value = next.Value;
-                                next.Value = temp;
+                                ChangeValues(currentNode, next);
+                                flag = true;
                             }
                             currentNode = next;
                             next = next.Next;
                         }
                     }
+                    
                 }
 
                 return list;
+        }
+
+        private static void ChangeValues(LinkedListNode<int> currentNode, LinkedListNode<int> next)
+        {
+            int temp = currentNode.Value;
+            currentNode.Value = next.Value;
+            next.Value = temp;
         }
     }
 }

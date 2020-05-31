@@ -20,9 +20,9 @@ namespace recapitulare
             int[] array3 = { 7,7, 5, 5, 9, 1, 0, 2, 6 };
             Console.WriteLine(array3.Distinct().ToList().Sum());
             LinkedList<int> lList = new LinkedList<int>();
+            lList.AddLast(11);
             lList.AddLast(10);
             lList.AddLast(5);
-            lList.AddLast(11);
             lList.AddLast(4);
             var node = lList.First;
             while (node != null)
